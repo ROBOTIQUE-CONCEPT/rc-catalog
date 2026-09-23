@@ -1,0 +1,221 @@
+.wprc-form {
+  --wprc-form-gap: clamp(.85rem, 1.6vw, 1.15rem);
+  --wprc-form-field-height: 54px;
+  --wprc-form-radius: 0;
+  --wprc-form-text: var(--theme-text-color, #1f2937);
+  --wprc-form-muted: var(--theme-text-color, rgba(31, 41, 55, .72));
+  --wprc-form-border: var(--theme-form-field-border-initial-color, var(--theme-border-color, rgba(17, 24, 39, .28)));
+  --wprc-form-border-focus: var(--theme-form-field-border-focus-color, var(--theme-palette-color-1, #ea580c));
+  --wprc-form-surface: transparent;
+  --wprc-form-button-bg: var(--theme-button-background-initial-color, var(--theme-palette-color-1, #ea580c));
+  --wprc-form-button-bg-hover: var(--theme-button-background-hover-color, var(--theme-palette-color-2, #c2410c));
+  --wprc-form-button-text: var(--theme-button-text-initial-color, #fff);
+  color: var(--wprc-form-text);
+  display: block;
+}
+
+.wprc-form__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--wprc-form-gap);
+}
+
+.wprc-field {
+  grid-column: span 12;
+}
+
+.wprc-field--width-6,
+.wprc-field--width-half {
+  grid-column: span 6;
+}
+
+.wprc-field--width-4,
+.wprc-field--width-third {
+  grid-column: span 4;
+}
+
+.wprc-field--width-8,
+.wprc-field--width-two-thirds {
+  grid-column: span 8;
+}
+
+.wprc-field__label {
+  color: var(--wprc-form-muted);
+  display: block;
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: .35rem;
+  text-transform: none;
+}
+
+.wprc-field input:not([type="checkbox"]),
+.wprc-field textarea,
+.wprc-field select {
+  background: var(--wprc-form-surface);
+  border: 0;
+  border-bottom: 2px solid var(--wprc-form-border);
+  border-radius: var(--wprc-form-radius);
+  box-shadow: none;
+  box-sizing: border-box;
+  color: var(--wprc-form-text);
+  text-transform: none;
+  width: 100%;
+}
+
+.wprc-field input:not([type="checkbox"]):focus,
+.wprc-field textarea:focus,
+.wprc-field select:focus {
+  background: transparent;
+  border-bottom-color: var(--wprc-form-border-focus);
+  box-shadow: none;
+  outline: none;
+}
+
+.wprc-field--floating {
+  position: relative;
+}
+
+.wprc-field--floating input:not([type="checkbox"]),
+.wprc-field--floating select {
+  min-height: var(--wprc-form-field-height);
+  padding-top: 1.15rem;
+  padding-bottom: .35rem;
+}
+
+.wprc-field--floating textarea {
+  min-height: 140px;
+  padding-top: 1.45rem;
+  resize: vertical;
+}
+
+.wprc-field--floating .wprc-field__label {
+  background: transparent;
+  color: var(--wprc-form-muted);
+  left: var(--theme-form-field-padding, 1rem);
+  margin: 0;
+  max-width: calc(100% - 2rem);
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  text-overflow: ellipsis;
+  top: calc(var(--wprc-form-field-height) / 2);
+  transform: translateY(-50%);
+  transform-origin: left top;
+  transition: transform .16s ease, color .16s ease, top .16s ease, font-size .16s ease;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.wprc-field--textarea.wprc-field--floating .wprc-field__label {
+  top: 1.85rem;
+}
+
+.wprc-field--floating input::placeholder,
+.wprc-field--floating textarea::placeholder {
+  color: transparent !important;
+  opacity: 0 !important;
+}
+
+.wprc-field--floating:focus-within .wprc-field__label,
+.wprc-field--floating.has-value .wprc-field__label,
+.wprc-field--select.wprc-field--floating .wprc-field__label {
+  color: var(--wprc-form-border-focus);
+  font-size: .78rem;
+  top: .52rem;
+  transform: translateY(0);
+}
+
+.wprc-field--select.wprc-field--floating select {
+  appearance: auto;
+}
+
+.wprc-field__checkbox {
+  align-items: flex-start;
+  color: var(--wprc-form-text);
+  display: flex;
+  gap: .55rem;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.wprc-field__checkbox input {
+  margin-top: .2rem;
+}
+
+.wprc-field__help {
+  color: var(--wprc-form-muted);
+  font-size: .86rem;
+  margin: .4rem 0 0;
+}
+
+.wprc-form__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.wprc-form__submit {
+  background: var(--wprc-form-button-bg);
+  border: 0;
+  border-radius: var(--theme-button-border-radius, 999px);
+  color: var(--wprc-form-button-text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--theme-button-min-height, 44px);
+  padding: var(--theme-button-padding, .75rem 1.35rem);
+  text-decoration: none;
+  text-transform: none;
+}
+
+.wprc-form__submit:hover,
+.wprc-form__submit:focus {
+  background: var(--wprc-form-button-bg-hover);
+}
+
+.woocommerce-thankyou-order-received[data-wprc-form-notice] {
+  margin-top: .75rem;
+  text-transform: none;
+}
+
+.woocommerce-thankyou-order-received[data-wprc-form-notice][hidden] {
+  display: none !important;
+}
+
+@media (max-width: 720px) {
+  .wprc-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wprc-field,
+  .wprc-field--width-6,
+  .wprc-field--width-half,
+  .wprc-field--width-4,
+  .wprc-field--width-third,
+  .wprc-field--width-8,
+  .wprc-field--width-two-thirds {
+    grid-column: span 1;
+  }
+}
+
+.wprc-form__body[hidden] {
+  display: none !important;
+}
+
+.wprc-form .wprc-turnstile {
+  width: 300px;
+  max-width: 100%;
+  margin: 1rem auto 0;
+  display: block;
+}
+
+.wprc-form .wprc-turnstile > div,
+.wprc-form .wprc-turnstile iframe {
+  width: 300px !important;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
